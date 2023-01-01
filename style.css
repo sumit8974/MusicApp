@@ -93,7 +93,7 @@ body{
 
 .progress-area .progress-bar{
   height: inherit;
-  width: 50%;
+  width: 0%;
   border-radius: inherit;
   position: relative;
   background: linear-gradient(90deg, var(--pink) 0%, var(--violet) 100%)
@@ -255,6 +255,11 @@ ul li .row p{
   opacity: 0.9;
 }
 
-/* ul li .audio-duration{
+ul li .audio-duration{
+  font-size: 16px;
+}
 
-} */
+ul li.playing{
+  color: var(--violet);
+  pointer-events: none;
+}
