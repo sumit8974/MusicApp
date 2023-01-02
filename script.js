@@ -10,6 +10,9 @@ const wrapper = document.querySelector(".wrapper"),
   nextBtn = wrapper.querySelector("#next"),
   progressArea = wrapper.querySelector(".progress-area"),
   progressBar = wrapper.querySelector(".progress-bar"),
+  volumnArea = wrapper.querySelector(".progress-area.volumn"),
+  volumnBar = wrapper.querySelector(".progress-bar.volumn"),
+  volumnCount = wrapper.querySelector(".volumn-count"),
   musicList = wrapper.querySelector(".music-list"),
   showMoreBtn = wrapper.querySelector("#more-music"),
   hideMusicBtn = wrapper.querySelector("#close");
@@ -18,6 +21,8 @@ const wrapper = document.querySelector(".wrapper"),
 let musicIndex = Math.floor(Math.random() * allMusic.length + 1);
 
 window.addEventListener("load", () => {
+  volumnCount.innerText = `${50}%`;
+  mainAudio.volume = 0.5;
   loadMusic(musicIndex); // calling the music function one window loads
   playingNow();
 });
@@ -241,3 +246,20 @@ function clicked(element) {
   playMusic();
   playingNow();
 }
+
+//added volumn
+volumnArea.addEventListener("click", (e) => {
+  let progressWidthval = volumnArea.clientWidth; //get the with of the progrss bar
+  let clickedOffSetX = e.offsetX; //get the offset x value
+  let volumnWidth = (clickedOffSetX / progressWidthval) * 100;
+  if (volumnWidth > 100) {
+    volumnWidth = 100;
+  }
+  if (volumnWidth < 0) {
+    volumnWidth = 0;
+  }
+  volumnBar.style.width = `${volumnWidth}%`;
+  volumnCount.innerText = `${Math.trunc(volumnWidth)}%`;
+  let appliedVolumn = volumnWidth / 100;
+  mainAudio.volume = appliedVolumn;
+});
