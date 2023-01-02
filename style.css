@@ -267,7 +267,7 @@ ul li.playing{
 /* volumn */
 
 .progress-area.volumn{
-  margin-top: 10px;
+  margin-top: 1px;
   width: 50%;
 }
 
@@ -288,4 +288,5 @@ ul li.playing{
 
 .progress-bar.volumn{
   width: 50%;
+  margin-bottom: 1px;
 }
